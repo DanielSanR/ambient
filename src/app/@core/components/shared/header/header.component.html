@@ -1,0 +1,25 @@
+<mat-toolbar class="mat-toolbar-header">
+    <mat-toolbar-row>
+        <button *ngIf="!baseURL" (click)="back()" id="backButton">
+            <img src="assets/images/back.png" alt="Volver" id="imgBack" >
+        </button>
+        <a routerLink="" id="icon-header">
+            <img src="assets/images/logo/logo_app.png" id="img-logo" alt="LOGO">
+        </a>
+        <span class="menu-spacer"></span>
+        <div id="nav-links" fxShow="true" fxHide.lt-md>
+            <a routerLink="" mat-button>
+                INICIO
+            </a>
+            <a routerLink="/institucion" mat-button>
+                INSTITUCIONES
+            </a>
+            <a routerLink="/datos" mat-button>
+                BUSCAR
+            </a>
+        </div>
+        <button mat-icon-button (click)="onToggleSidenav()" aria-label="menu" fxShow="true" fxHide.gt-sm >
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,57 @@
+table {
+    display: block;
+}
+
+th.mat-header-cell {
+  text-align: center;
+}
+  
+td {
+  text-align: center;
+  padding: 3px!important;
+}
+
+span.unity-data-t {
+  font-size: 12px;
+}
+
+span.date-t {
+  font-size: 14px;
+}
+
+
+.mat-table {
+  overflow-x: scroll;
+}
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.mat-row,
+.mat-header-row {
+  display: table-row;
+  min-height: 36px !important;
+}
+
+mat-paginator{
+  width:100%;
+  display: block;
+}
+
+th.mat-header-cell:last-of-type {
+  padding-right: 12px;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}

@@ -1,0 +1,91 @@
+#logo_i_comp {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    bottom: 45%;
+    left: 12%;
+}
+
+@media only screen and (min-width: 800px) {
+    #logo_i_comp {
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        top: 40%;
+        left: 35%;
+    }
+
+    .logo-content {
+        display: inline-flex;
+        bottom: 23%;
+        left: 45%;
+        margin-right: auto;
+        margin-left: auto;
+        position: absolute;
+    }
+
+    a #logo_i_crep {
+        width: 160px;
+    }
+
+    #logo_i_silicon {
+        width: 187px;
+        top: 20%;
+        left: 45%;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+    }
+
+}
+
+.div-content-img {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: url(../../../../assets/images/logo/logo_inicio.png) no-repeat center center;
+    background-size: cover;
+}
+
+.container-inicio {
+    width: auto;
+    margin: 0px auto;
+    margin-top: 0px;
+    display: inline;
+    padding: 10px auto;
+}
+
+@media(max-width: 800px) {
+    .div-content-img {
+        height: 100%;
+        display: flex;
+    }
+
+    .logo-content {
+        display: inline-flex;
+        bottom: 20%;
+        left: 28%;
+        margin-right: auto;
+        margin-left: auto;
+        position: absolute;
+    }
+
+    a #logo_i_crep {
+        width: 160px;
+    }
+
+    #logo_i_silicon {
+        width: 187px;
+        top: 20%;
+        left: 26%;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+    }
+}
+
+
+
+
