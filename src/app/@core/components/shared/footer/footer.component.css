@@ -1,0 +1,35 @@
+.mat-toolbar-footer {
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    background: url(../../../../../assets/images/logo/footer.png) no-repeat center center;
+    background-size: cover;
+    align-items: center;
+    z-index: 1;
+}
+
+h3 {
+    font-size: 12px;
+    color: white;
+}
+
+.icon-sn {
+    height: 30px;
+    width: 25px;
+    padding: 0px 15px;
+    margin-top: 6px;
+}
+
+ul {
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+.mat-toolbar-footer {
+    justify-content: center;
+}

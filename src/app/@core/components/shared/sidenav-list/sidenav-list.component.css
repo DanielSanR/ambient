@@ -1,0 +1,44 @@
+a {
+    color: white;
+}
+
+a:hover a:active {
+    color: lightgray;
+}
+
+#sidenav-toolbar {
+    height: 70px;
+    background: url(../../../../../assets/images/logo/header.png) no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+span {
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+mat-icon {
+    padding-right: 5px;
+    color: rgb(0, 175, 215);
+}
+
+@media(max-width: 800px) {
+    #img-logo {
+        max-width: 160px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    #icon-header {
+        margin-bottom: 0px;
+        margin-top: 11px;
+    }
+}
+
+@media(min-width: 700px) {
+    #img-logo {
+        max-width: 160px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
