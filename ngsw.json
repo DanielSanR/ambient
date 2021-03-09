@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1615297422349,
+  "timestamp": 1615298016515,
   "index": "/ambient/index.html",
   "assetGroups": [
     {
@@ -188,7 +188,7 @@
     "/ambient/layers.416d91365b44e4b4f477.png": "c9e7528e491a39232ba24a2706c6c739d6fb0f06",
     "/ambient/logo_inicio.bc851d4c9a2c03e8a38e.png": "feeff3f295e56d90a9c6ca50600a966ac00a6b70",
     "/ambient/main.4f8ea8fcfb3a15b62954.js": "df126ce683368b297d8fa01d14062ebb897bd917",
-    "/ambient/manifest.webmanifest": "ea4630d768ed0468ddfa928d93403b336ebf1330",
+    "/ambient/manifest.webmanifest": "3699ec15217eeae8cb19f507467e4af6e07b1fdb",
     "/ambient/marker-icon.2b3e1faf89f94a483539.png": "60a90bcbb2b42b7ddb4556db94eb7c1084b0e5da",
     "/ambient/polyfills.2e89f9530eab053a7df4.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",
     "/ambient/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
