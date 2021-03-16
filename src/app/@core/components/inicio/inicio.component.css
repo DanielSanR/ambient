@@ -28,10 +28,12 @@
 
     a #logo_i_crep {
         width: 160px;
+        height: 85px;
     }
 
     #logo_i_silicon {
         width: 187px;
+        height: 75px;
         top: 20%;
         left: 45%;
         margin-left: auto;
@@ -74,10 +76,12 @@
 
     a #logo_i_crep {
         width: 160px;
+        height: 85px;
     }
 
     #logo_i_silicon {
         width: 187px;
+        height: 75px;
         top: 20%;
         left: 26%;
         margin-left: auto;
