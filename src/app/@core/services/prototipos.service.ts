@@ -14,7 +14,7 @@ export class PrototiposService{
 	}
  
 	getInstitucion(id:number):Observable<Prototipo[]> {
-		return this._http.get<Prototipo[]>('http://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototiposPorInstitucion/'+id);
+		return this._http.get<Prototipo[]>('https://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototiposPorInstitucion/'+id);
 	}
 	
 }

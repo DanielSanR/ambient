@@ -21,6 +21,10 @@ import { Prototipo } from '@core/models/prototipo';
 import { Institucion } from '@core/models/institucion';
 import { DatoAmbiental } from '../../models/datoAmbiental';
 import { datoPorFecha } from '@core/models/datosPorFecha';
+/*  import  {Prototipo,
+  Institucion,
+  DatoAmbiental,
+  datoPorFecha} from '@core/models/modules.models' */
 //extras 
 import * as moment from 'moment';
 import { default as _rollupMoment } from 'moment';
@@ -154,17 +158,7 @@ this.error$.mensaje = response.mensaje;this.error$.titulo = response.titulo;
       titulo: 'Cargando datos',
       mensaje: 'Cargando...' 
     };
-    this.InstitucionSub$.add(this._INSTITUCIONES.getInstitucion()/* .pipe(
-      shareReplay(),
-      retryWhen(errors => {
-          return errors
-                  .pipe(delayWhen(() => timer(5000)),
-                      tap(() => { 
-                       this.ConnectionTimeOut();
-                    })
-                  );
-      } )
-    ) */.subscribe(
+    this.InstitucionSub$.add(this._INSTITUCIONES.getInstitucion().subscribe(
       result => {
             this.error=false;
             this.options=result;
@@ -237,16 +231,7 @@ getPrototipos( institucionId: { id: number; }): any{
   this.isLoadingPrototype = true;
   this.tablaStatus = false;
   this.selected=null;
-    this.PrototipoService$.add(this._PROTOTIPOS.getInstitucion(institucionId.id)./* pipe(
-      shareReplay(),
-      retryWhen(errors => {
-          return errors
-                  .pipe(delayWhen(() => timer(5000)),
-                      tap(() => {
-                       this.ConnectionTimeOut();})
-                  );
-      } )
-    ). */subscribe(
+    this.PrototipoService$.add(this._PROTOTIPOS.getInstitucion(institucionId.id).subscribe(
       result  => { 
         this.isLoadingPrototype = false;  
         this.prototiposArr = result
@@ -284,18 +269,6 @@ newForm(): void{
     });
 
   }
-  //Funcion que refleja el error de timeot en la interfaz
-ConnectionTimeOut(){
-  this.error$ = {
-    titulo: 'buscar',
-    mensaje: 'Reintentando...' 
-  };
-  setTimeout(() => {
-    this.error$ = {titulo: 'internet',
-    mensaje: 'No se pudieron recuperar los datos, compruebe su conexión.'
-    };
-  }, 2000);
-}
 //busca los datos de la API
 searchData(): void{ 
    this.loading = true;
@@ -306,7 +279,6 @@ searchData(): void{
                   mensaje: 'Buscando...' 
                 };
                   this.error= true;
-              // Falta verificar si es por rango o no
                   this.selectedIndex = 0;
                   this.tablaStatus = false;
                   let delay = 0
@@ -317,34 +289,17 @@ searchData(): void{
                     });
                   }
                   else {
-                    if  (this.checkStatus === true) {
-                    
+                    if  (this.checkStatus === true) { 
                       let datoamb = DatoAmbiental;
                       this.DatosbyRangeSub$ =this._DATOSXFECHA.getByRange(this.selected.id,
                       this.formulario.controls.fechaInicio.value.format('YYYY-MM-DD'),
                       this.formulario.controls.fechaFin.value.format('YYYY-MM-DD')
-                      )./* pipe(
-                        map(result => result ),
-                        shareReplay(),
-                        retryWhen(errors => {
-                          return errors
-                                .pipe(delayWhen(() => timer(3000)),
-                                tap(() => {
-                                  this.formNotSend = false;
-                                  this.ConnectionTimeOut(); 
-                                        })
-                                    );
-                                } )
-                      ). */subscribe(
+                      ).subscribe(
                         result => {
                           this.loading= false
                           this.formNotSend = true;
-                          /* this.formulario.controls.value.patchValue({
-                            formEnviado : false,
-                            }) */
                           if(!(result.datosPorFecha) || (!result.datosPorFecha[0]))
-                          {
-              
+                          {       
                             this.error$ = {
                               titulo: 'sinDatos',
                               mensaje: 'No se encontrarón datos en el rango seleccionado.'
@@ -353,42 +308,22 @@ searchData(): void{
                           }
                           else {  
                             this.error=false;
-                            this.datosPorfecha = result.datosPorFecha
-                            
+                            this.datosPorfecha = result.datosPorFecha                     
                             this.processData();    
-                          }
-                        
+                          }         
                         }, 
                         err => this.loading = false
-                      );
-                        
-              
+                      );            
                     }
-              
-                //datos por una sola fecha
                      else
                       {        
                       this.DatosDailySub$ = this._DATOSXFECHA.getByDay
                       (this.selected.id,
                        this.formulario.controls.fechaInicio.value.format('YYYY-MM-DD')
-                       )/* .pipe(
-                        map(result => result),
-                        shareReplay(),
-                        retryWhen( errors => {
-                        return errors
-                               .pipe(delayWhen(() => timer(3000)),
-                                tap(() => {
-                                      this.formNotSend = false;
-                                      this.ConnectionTimeOut(); })
-                                    );
-                                    } )
-                      ) */.subscribe(
+                       ).subscribe(
                         result => {
                           this.loading= false
                           this.formNotSend = true;
-                        /*   this.formulario.controls.value.patchValue({
-                            formEnviado : false,
-                            }) */
                           if(!result.datosPorFecha[0])
                           { 
                             this.error$ = {
@@ -397,24 +332,17 @@ searchData(): void{
                           };
                             this.error = true;
                         }
-              
                           else {
                             this.datosPorfecha = result.datosPorFecha
                             this.error=false;
-                          
                             this.processData();
-                         }
-                         
-                  
+                         }            
                     }, 
-                      //var q muestra el error de API
                       err => this.loading = false
-                                                            )  
+                                               )  
                 }
               }
               }
-    
-     
 }
  
 //setea los iconos del clima
@@ -438,63 +366,53 @@ this.src_d_wind= 'assets/images/icons_modal/icons_dire_wind/icons-blue/'+ this.I
 //limpia valores q vienen sin 0 y realiza validaciones
 processData(){
 
-this.ultimosDatos = this.datosPorfecha[0]
- this.setIcon();
-   
-  
-
-                    this.error=false;
-                
-                    this.datosPorfecha.forEach(element => {
-                    const useContex: any = 
-                                    ({
-                                      temperaturaAmbiente=0,
-                                      humedadAmbiente=0,
-                                      humedadSuelo=0,
-                                      luz=0,
-                                      lluvia=0,
-                                      viento=0,
-                                      precipitaciones=0,
-                                      direccionViento=0
-                                    }) => {
-                  return {
-                          temperaturaAmbiente:this.fixValues(temperaturaAmbiente),
-                          humedadAmbiente:(humedadAmbiente),
-                          humedadSuelo:this.fixValues(humedadSuelo),
-                          luz:this.fixValues(luz),
-                          lluvia:this.fixValues(lluvia),
-                          viento:this.fixValues(viento),
-                          precipitaciones:this.fixValues(precipitaciones),
-                          direccionViento:((direccionViento)>7 ? direccionViento=0 : direccionViento=direccionViento)
-                      }
-    
-                    }
-                    let test  :DatoAmbiental[];
-                    test =useContex(element.datosAmbientales);
-                    element.datosAmbientales =  test;
-                     
-                  }); 
-                  this.prototipo_nombre = this.selected.nombre; 
-                 
-                    this.tablaStatus = true;
-                    this.calculateDayDiff(this.datosPorfecha, this.formulario.controls.fechaInicio.value,
-                    this.formulario.controls.fechaFin.value)
-                    this.flagChartMatTab = true
+  this.ultimosDatos = this.datosPorfecha[0]
+  this.setIcon();
+  this.error=false;
+  this.datosPorfecha.forEach(element => {
+      const useContex: any = 
+        ({
+          temperaturaAmbiente=0,
+          humedadAmbiente=0,
+          humedadSuelo=0,
+          luz=0,
+          lluvia=0,
+          viento=0,
+          precipitaciones=0,
+          direccionViento=0
+        }) => {
+          return {
+            temperaturaAmbiente:this.fixValues(temperaturaAmbiente),
+            humedadAmbiente:(humedadAmbiente),
+            humedadSuelo:this.fixValues(humedadSuelo),
+            luz:this.fixValues(luz),
+            lluvia:this.fixValues(lluvia),
+            viento:this.fixValues(viento),
+            precipitaciones:this.fixValues(precipitaciones),
+            direccionViento:((direccionViento)>7 ? direccionViento=0 : direccionViento=direccionViento)
+              }
+            }
+      let test  :DatoAmbiental[];
+      test =useContex(element.datosAmbientales);
+      element.datosAmbientales =  test; 
+          }); 
+  this.prototipo_nombre = this.selected.nombre; 
+  this.tablaStatus = true;
+  this.calculateDayDiff(this.datosPorfecha, this.formulario.controls.fechaInicio.value,
+  this.formulario.controls.fechaFin.value)
+  this.flagChartMatTab = true
 }
 
 fixValues(valor : number){
-  
   if ((valor < 0) || (valor > 999 )){
     valor = 0;
     return valor;
   }
   else return valor;
-
 }
 
-//sirve para sacar los dias en los que hay datos
+
 calculateDayDiff(result: any, fecha1: string, fecha2: string){
- 
   const f1 = fecha1;
   const f2 = moment(fecha2);
   const dias = f2.diff(f1, 'days');
@@ -523,13 +441,9 @@ getEstaciones( ): void{
  
 this.getPrototipos(this.formulario.get('institutoControl').value);
    setTimeout(() => {
-    
     if  (!this.prototiposArr) {this.selected = null, this.prototiposArr = [] }
-
     else {  const prototipo  = this.prototiposArr.map(x => x.id).indexOf(Number(this.prototype_id));
-      this.selected = this.prototiposArr[prototipo];}
-  
-    
+      this.selected = this.prototiposArr[prototipo];}  
    }, 500);
 
 
@@ -540,8 +454,6 @@ ngAfterContentChecked() {
  }
 
 ngOnDestroy(): void {
-  //Called once, before the instance is destroyed.
-  //Add 'implements OnDestroy' to the class.
   this.DatosbyRangeSub$.unsubscribe();
   this.DatosDailySub$.unsubscribe();
   this.InstitucionSub$.unsubscribe();

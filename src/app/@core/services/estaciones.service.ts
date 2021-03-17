@@ -13,7 +13,7 @@ export class EstacionesService {
 
 
   constructor(private _http: HttpClient) { 
-    this.url = 'http://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototiposPorInstitucion/';
+    this.url = 'https://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototiposPorInstitucion/';
   }
 
   

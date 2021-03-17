@@ -29,11 +29,12 @@
     "dataGroups": [{
         "name": "api-call",
         "urls": [
-            "http://ambient.siliconmisiones.gob.ar/api/institucionTemporal/",
-            "http://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototipo/"
+            "https://ambient.siliconmisiones.gob.ar/api/institucionTemporal/",
+            "https://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototipo/",
+            "https://ambient.siliconmisiones.gob.ar/api/datoAmbientalPrototipo/**"
         ],
         "cacheConfig": {
-            "maxSize": 20,
+            "maxSize": 200,
             "maxAge": "24h",
             "timeout": "5s",
             "strategy": "freshness"

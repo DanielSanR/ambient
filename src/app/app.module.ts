@@ -26,7 +26,7 @@ import { SpinnerComponent } from './@core/components/spinner/spinner.component';
 import { GraficoHorarioComponent } from './@core/components/datos/grafico-horario/grafico-horario.component';
  
 //Modulos
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './material.module'; 
 import { HighchartsChartModule } from 'highcharts-angular'; 
 
 //Servicios
@@ -37,7 +37,6 @@ import { PrototiposService } from './@core/services/prototipos.service';
 import { ServerErrorsInterceptor } from './@core/services/Interceptor.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
 
 @NgModule({
   entryComponents:[
@@ -70,6 +69,7 @@ import { environment } from '../environments/environment';
     MaterialModule,
     ReactiveFormsModule,
     HighchartsChartModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
