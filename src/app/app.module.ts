@@ -37,6 +37,8 @@ import { PrototiposService } from './@core/services/prototipos.service';
 import { ServerErrorsInterceptor } from './@core/services/Interceptor.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {  HttpClientJsonpModule } from '@angular/common/http';
+ 
 
 @NgModule({
   entryComponents:[
@@ -64,6 +66,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     FormsModule,
     AppRoutingModule,
     MaterialModule,

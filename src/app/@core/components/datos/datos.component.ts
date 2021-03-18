@@ -30,6 +30,7 @@ import * as moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { tap,shareReplay,delayWhen,map, retryWhen, startWith } from 'rxjs/operators'; 
 import { ErrorService} from '../../services/error.service';
+import { HttpClient } from '@angular/common/http';
 interface Icono {
   direccion: string
   nombre_icono:string
@@ -109,7 +110,7 @@ export class DatosComponent implements OnInit,OnDestroy {
   DatosDailySub$ = new Subscription;
   InstitucionSub$ = new Subscription();
   PrototipoService$ = new Subscription();
- 
+ items : any;
   
   constructor(private formBuilder: FormBuilder, private _DATOSXFECHA: DatosService, private cdref: ChangeDetectorRef,
               private _VALIDADORES: ValidadoresService,
@@ -118,7 +119,8 @@ export class DatosComponent implements OnInit,OnDestroy {
               private _INSTITUCIONES: InstitucionesService,
               private _PROTOTIPOS: PrototiposService,
               private router : Router, public dialog : MatDialog,
-              private _ERROR: ErrorService) {
+              private _ERROR: ErrorService,
+              private http: HttpClient) {
                
                   this._ADAPTER.setLocale('es');
                   const moment1 = _rollupMoment || moment;
@@ -135,7 +137,9 @@ export class DatosComponent implements OnInit,OnDestroy {
  
  
   ngOnInit(): void {
-
+    this.http.get("https://reqres.in/api/users?page=2").subscribe((result: any)=>{
+          this.items=result.data;
+    })
     //sub para manejo de errores service
     this._ERROR.enviarErrorjeObservable.subscribe(response => {
 this.error$.mensaje = response.mensaje;this.error$.titulo = response.titulo;
