@@ -29,10 +29,10 @@
     "dataGroups": [{
         "name": "api-call",
         "urls": [
-            "https://ambient.siliconmisiones.gob.ar/api/**"            
+            "https://ambient.siliconmisiones.gob.ar/api/**"
         ],
         "cacheConfig": {
-            "maxSize": 20,
+            "maxSize": 200,
             "maxAge": "24h",
             "timeout": "5s",
             "strategy": "freshness"

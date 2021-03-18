@@ -39,6 +39,7 @@ getDatos(id: number ): Observable<Prototipo[]> {
 getByRange(id: number,start: Date, end : Date ): Observable<PrototipoDatos> {
   return this._http.get<any>(environment.BASE_URL+'datoAmbientalPrototipo/'+id+'/'+start+'/'+end);
 }
+  
 getByDay(id: number,start: Date): Observable<PrototipoDatos> {
   return this._http.get<any>(environment.BASE_URL+'datoAmbientalPrototipo/'+id+'/'+start);
 }

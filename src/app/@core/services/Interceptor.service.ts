@@ -16,7 +16,7 @@ interface Error {
 export class ServerErrorsInterceptor implements HttpInterceptor {
   error$ : Error;
     retryDelay = 5000;
-  retryMaxAttempts = 5;
+  retryMaxAttempts = 100;
   constructor( private _ERROR : ErrorService, private _SPINNER : SpinnerService
    
   ) {}
