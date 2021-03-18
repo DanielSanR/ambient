@@ -17,7 +17,7 @@ export class InstitucionesService{
 
 	
 	getInstitucion():Observable<Institucion[]> {
-		return this._http.jsonp<Institucion[]>(this.url,'c');
+		return this._http.get<Institucion[]>(this.url);
 	}
 
 
