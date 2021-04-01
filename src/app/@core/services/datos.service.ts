@@ -17,7 +17,7 @@ export class DatosService {
 
   constructor(private _http: HttpClient) {
     /* //TODO */
-    this.url = 'http://192.168.10.116:50000/api';
+    
 
   }
 

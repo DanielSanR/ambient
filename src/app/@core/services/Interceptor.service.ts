@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, timer, throwError, of } from 'rxjs';
 import { retryWhen, tap, mergeMap } from 'rxjs/operators';
-
 import { ErrorService} from '../services/error.service';
 import { SpinnerService } from './spinner.service';
 import { Location } from '@angular/common';
@@ -14,6 +13,7 @@ interface Error {
 
 @Injectable()
 export class ServerErrorsInterceptor implements HttpInterceptor {
+  
   error$ : Error;
     retryDelay = 5000;
   retryMaxAttempts = 100;
@@ -22,6 +22,11 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  /*   let authReq = request.clone({
+      headers: request.headers.set('Content-Type','application/json')
+    }); */
+    
+
    this._SPINNER.requestStarted();
     return next.handle(request)
       .pipe(
