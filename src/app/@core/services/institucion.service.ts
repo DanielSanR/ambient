@@ -1,5 +1,5 @@
 import  {Injectable} from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs-compat/Observable';
 import { Institucion } from '@core/models/institucion';
 import { catchError } from 'rxjs/operators'; 
@@ -12,7 +12,6 @@ export class InstitucionesService{
 
 	constructor( private _http: HttpClient ) {
 		this.url = environment.BASE_URL+'institucionTemporal';
-
 	}
 
 	
