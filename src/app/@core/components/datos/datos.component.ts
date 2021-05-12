@@ -110,7 +110,7 @@ export class DatosComponent implements OnInit,OnDestroy {
   DatosDailySub$ = new Subscription;
   InstitucionSub$ = new Subscription();
   PrototipoService$ = new Subscription();
- items : any;
+ 
   
   constructor(private formBuilder: FormBuilder, private _DATOSXFECHA: DatosService, private cdref: ChangeDetectorRef,
               private _VALIDADORES: ValidadoresService,
@@ -137,9 +137,7 @@ export class DatosComponent implements OnInit,OnDestroy {
  
  
   ngOnInit(): void {
-    this.http.get("https://reqres.in/api/users?page=2").subscribe((result: any)=>{
-          this.items=result.data;
-    })
+ 
     //sub para manejo de errores service
     this._ERROR.enviarErrorjeObservable.subscribe(response => {
 this.error$.mensaje = response.mensaje;this.error$.titulo = response.titulo;
